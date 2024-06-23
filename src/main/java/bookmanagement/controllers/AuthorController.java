@@ -18,6 +18,7 @@ import bookmanagement.models.Author;
 import bookmanagement.persistance.AuthorReposistory;
 @Controller
 public class AuthorController {
+	
 	@Autowired
 	AuthorReposistory authorRepo; //database ကို ခေါ်တာ
 	
@@ -52,6 +53,13 @@ public class AuthorController {
 		Author author = authorRepo.getById(id);
 		return new ModelAndView("edit_author","author",author);
 	}
+	
+	@GetMapping("editauthor/{id}")
+	public ModelAndView edit2Author(@PathVariable int id) {
+		Author author = authorRepo.getById(id);
+		return new ModelAndView("edit_author","author",author);
+	}
+	
 	@PostMapping("editauthor")
 	public String editAuthor(@ModelAttribute("author")@Validated Author author,BindingResult bResult,ModelMap map) {
 		if(bResult.hasErrors()) {
