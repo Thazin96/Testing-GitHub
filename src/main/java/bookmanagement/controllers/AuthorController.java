@@ -70,4 +70,9 @@ public class AuthorController {
 		authorRepo.delete(id);
 		return "redirect:/authors";
 	}
+	
+	@GetMapping("logout")
+	public String Logout() {
+		return "redirect:/authors";
+	}
 }
